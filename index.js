@@ -8,69 +8,138 @@ app.get('/', (req, res) => res.status(200).json({ status: 'ok' }))
 
 app.get('/tview', (req, res) => {
 	
-	const puppeteer = require('puppeteer-extra'), readlineSync = require('readline-sync'), delay = require('delay'), StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer['use'](StealthPlugin());
-const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker');
+	const puppeteer = require("puppeteer-extra");
+const readlineSync = require("readline-sync");
+const delay = require("delay");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+puppeteer.use(StealthPlugin());
 
+const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
+puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
+(async () => {
+  console.log("\nWelcome to tiktok views bot");
+  // console.log("1. Get views");
+  // console.log("2. Get shares");
+  // console.log("3. Get comment likes\n");
+  // let menu = readlineSync.question("Choose menu: ");
+  let menu = 1;
 
-puppeteer['use'](AdblockerPlugin({ 'blockTrackers': !![] })), ((async () => {
-	
-    
-let _0x3099cd = 0x1;
-    if (_0x3099cd > 0x1)
-        console['log']('Wrong\x20menu');
-    else {
-        let _0x167f33 = req.query.url
-        const _0x3c0b03 = {
-                'waitUntil': 'domcontentloaded',
-                'timeout': 0x1388
-            }, _0x4f0939 = await puppeteer['launch']({
-                'headless': ![],
-                'ignoreHTTPSErrors': !![],
-                'slowMo': 0x0,
-                'args': [
-                    '--no-sandbox',
-                    '--disable-setuid-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--disable-cache',
-                    '--disable-application-cache',
-                    '--disk-cache-size=0',
-                    '--disable-accelerated-2d-canvas',
-                    '--disable-sync',
-                    '--no-first-run',
-                    '--no-zygote',
-                    '--disable-gpu',
-                    '--mute-audio'
-                ]
-            }), _0x13dda4 = await _0x4f0939['newPage'](), _0x3c2442 = _0x13dda4['waitForNavigation']();
-        await _0x13dda4['goto']('https://zefoy.com/', _0x3c0b03), await _0x3c2442, readlineSync['question']('Please\x20check\x20the\x20captcha\x20and\x20press\x20enter\x20on\x20here\x20to\x20continue...'), await delay(0x1388);
-        _0x3099cd == 0x1 && (await _0x13dda4['waitForSelector']('.row\x20>\x20.col-sm-4\x20>\x20.card\x20>\x20.menu4'), await _0x13dda4['click']('.row\x20>\x20.col-sm-4\x20>\x20.card\x20>\x20.menu4'));
-        await delay(0x3e8), await _0x13dda4['waitForSelector']('#sid4\x20>\x20.card\x20>\x20form\x20>\x20.input-group\x20>\x20.form-control'), await _0x13dda4['click']('#sid4\x20>\x20.card\x20>\x20form\x20>\x20.input-group\x20>\x20.form-control'), await _0x13dda4['type']('#sid4\x20>\x20.card\x20>\x20form\x20>\x20.input-group\x20>\x20.form-control', _0x167f33);
-        for (let _0xdef952 = 0x0; _0xdef952 < 0x3e8; _0xdef952++) {
-            try {
-                console['log']('\x0aRunning\x20proccess\x20-->\x20' + _0xdef952), await delay(0x3e8), await _0x13dda4['waitForSelector']('#sid4\x20>\x20div\x20>\x20form\x20>\x20div\x20>\x20div\x20>\x20button', { 'timeout': 0x7530 }), await _0x13dda4['click']('#sid4\x20>\x20div\x20>\x20form\x20>\x20div\x20>\x20div\x20>\x20button');
-                try {
-                    await _0x13dda4['waitForSelector']('#c2VuZC9mb2xsb3dlcnNfdGlrdG9V\x20>\x20div.row.text-light.d-flex.justify-content-center\x20>\x20div\x20>\x20form\x20>\x20button', { 'timeout': 0xbb8 });
-                    let _0x25ddcd = await _0x13dda4['$']('#c2VuZC9mb2xsb3dlcnNfdGlrdG9V\x20>\x20div.row.text-light.d-flex.justify-content-center\x20>\x20div\x20>\x20form\x20>\x20button'), _0x2f81ee = await _0x13dda4['evaluate'](_0x27dcde => _0x27dcde['textContent'], _0x25ddcd);
-                    console['log']('Total\x20content\x20views:\x20' + (_0x2f81ee ? _0x2f81ee['trim']() : 'Unknown')), await delay(0x1f4), await _0x13dda4['click']('#c2VuZC9mb2xsb3dlcnNfdGlrdG9V\x20>\x20div.row.text-light.d-flex.justify-content-center\x20>\x20div\x20>\x20form\x20>\x20button'), await delay(0x157c);
-                } catch (_0x57224c) {
-                    console['log']('Waiting\x20for\x20next\x20submit\x20-\x20(Cooldown)');
-                }
-                await _0x13dda4['waitForSelector']('#c2VuZC9mb2xsb3dlcnNfdGlrdG9V\x20>\x20h4', { 'timeout': 0x2710 });
-                let _0x2c6f13 = await _0x13dda4['$']('#c2VuZC9mb2xsb3dlcnNfdGlrdG9V\x20>\x20h4'), _0x28ae16 = await _0x13dda4['evaluate'](_0x3b5f71 => _0x3b5f71['textContent'], _0x2c6f13);
-                console['log'](_0x28ae16 ? _0x28ae16 : 'Unknown');
-                if (_0x28ae16['trim']() == 'Checking\x20Timer...')
-                    console['log']('Please\x20wait\x20130\x20seconds...'), await delay(0x1fbd0);
-                else {
-                    let _0x3c8feb = _0x28ae16['trim']()['match'](/(\d+)/g), _0x1c4eb6 = _0x3c8feb[0x0] * 0x3c + _0x3c8feb[0x1] * 0x1;
-                    console['log']('Please\x20wait\x20' + _0x1c4eb6 + '\x20seconds...'), await delay(_0x1c4eb6 * 0x3e8);
-                }
-            } catch (_0x58a6de) {
-                console['log'](_0x58a6de), await _0x4f0939['close']();
-            }
-        }
+  if (menu > 3) {
+    console.log("Wrong menu");
+  } else {
+    let tiktokUrl = req.query.url
+    const options = {
+      waitUntil: "domcontentloaded",
+      timeout: 5000,
+    };
+    const browser = await puppeteer.launch({
+      headless: false,
+      ignoreHTTPSErrors: true,
+      slowMo: 0,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-cache",
+        "--disable-application-cache",
+        "--disk-cache-size=0",
+        "--disable-accelerated-2d-canvas",
+        "--disable-sync",
+        "--no-first-run",
+        "--no-zygote",
+        "--disable-gpu",
+        "--mute-audio",
+      ],
+    });
+    const page = await browser.newPage();
+    const navigationPromise = page.waitForNavigation();
+    await page.goto("https://zefoy.com/", options);
+    await navigationPromise;
+    readlineSync.question(
+      "Please check the captcha and press enter on here to continue..."
+    );
+    await delay(5000);
+    if (menu == 1) {
+      // click on tiktok views
+      await page.waitForSelector(".row > .col-sm-4 > .card > .menu4");
+      await page.click(".row > .col-sm-4 > .card > .menu4");
     }
-})());
+    // else if (menu == 2) {
+    //   await page.waitForSelector(".row > .col-sm-4 > .card > .menu7");
+    //   await page.click(".row > .col-sm-4 > .card > .menu7");
+    // } else if (menu == 3) {
+    //   await page.waitForSelector(".row > .col-sm-4 > .card > .menu3");
+    //   await page.click(".row > .col-sm-4 > .card > .menu3");
+    // }
+
+    // click on tiktok url input
+    await delay(1000);
+    await page.waitForSelector(
+      "#sid4 > .card > form > .input-group > .form-control"
+    );
+    await page.click("#sid4 > .card > form > .input-group > .form-control");
+    // input tiktok url
+    await page.type(
+      "#sid4 > .card > form > .input-group > .form-control",
+      tiktokUrl
+    );
+    //   loop this code
+    for (let i = 0; i < 1000; i++) {
+      try {
+        console.log("\nRunning proccess --> " + i);
+        await delay(1000);
+        // click search button
+        await page.waitForSelector("#sid4 > div > form > div > div > button", {
+          timeout: 30000,
+        });
+        await page.click("#sid4 > div > form > div > div > button");
+        // wait total views
+        try {
+          await page.waitForSelector(
+            "#c2VuZC9mb2xsb3dlcnNfdGlrdG9V > div.row.text-light.d-flex.justify-content-center > div > form > button",
+            { timeout: 3000 }
+          );
+          let element = await page.$(
+            "#c2VuZC9mb2xsb3dlcnNfdGlrdG9V > div.row.text-light.d-flex.justify-content-center > div > form > button"
+          );
+          let text = await page.evaluate((el) => el.textContent, element);
+          console.log(
+            "Total content views: " + (text ? text.trim() : "Unknown")
+          );
+          await delay(500);
+          // click send action button
+          await page.click(
+            "#c2VuZC9mb2xsb3dlcnNfdGlrdG9V > div.row.text-light.d-flex.justify-content-center > div > form > button"
+          );
+          await delay(5500);
+        } catch (error) {
+          console.log("Waiting for next submit - (Cooldown)");
+        }
+        // wait for success message
+        await page.waitForSelector("#c2VuZC9mb2xsb3dlcnNfdGlrdG9V > h4", {
+          timeout: 10000,
+        });
+        let element2 = await page.$("#c2VuZC9mb2xsb3dlcnNfdGlrdG9V > h4");
+        let text2 = await page.evaluate((el) => el.textContent, element2);
+        console.log(text2 ? text2 : "Unknown");
+        if (text2.trim() == "Checking Timer...") {
+          console.log("Please wait 130 seconds...");
+          await delay(130000);
+        } else {
+          let matches = text2.trim().match(/(\d+)/g);
+          let timeDelay = matches[0] * 60 + matches[1] * 1;
+          console.log("Please wait " + timeDelay + " seconds...");
+          await delay(timeDelay * 1000);
+        }
+      } catch (error) {
+        console.log(error);
+        // console.log("Error, please check try again.");
+        await browser.close();
+      }
+    }
+  }
+})();
+
 	
 	
 	
